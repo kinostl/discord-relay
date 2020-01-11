@@ -1,6 +1,7 @@
 import discord
 import asyncio
 import requests
+import emoji
 
 class RhostRelayClient(discord.Client):
     async def on_ready(self):
@@ -14,8 +15,10 @@ class RhostRelayClient(discord.Client):
         if message.author.discriminator == '0000':
             return
 	# rhost api update channel
-        execstring="cemit({},{} says '{}')".format(message.channel.name,message.author.display_name, message.content).encode('ascii', 'ignore').decode('ascii')
-        headers={"Exec":execstring}
+        #execstring="cemit({},escape({}#{} says, \"{}\"))".format(message.channel.name,message.author.display_name, message.author.discriminator, message.clean_content).encode('ascii', 'ignore').decode('ascii')
+        execstring="cemit({},escape({}#{} says, \"{}\"))".format(message.channel.name,message.author.display_name, message.author.discriminator, emoji.demojize(message.clean_content))
+        headers={"Exec":execstring, "Encode":"Yes"}
+        print(execstring)
         requests.post("http://localhost:60601",headers=headers,auth=("#50","SomethingSecure"))
         #print(message.content)
         #curl -X POST --user "#50:SomethingSecure" -H "Exec:cemit(test,ApiBot says 'cemit hello from API')" --head http://localhost:60601
