@@ -6,6 +6,7 @@ const hooks={
 	'test':'https://discordapp.com/api/webhooks/670032397567524864/y25MIeeJLJ3fQjGtGqoP341kmKXWm7mnnN5QVWFXXxwik0h7nMq7_YuYXBwYrhAXZqIq',
 }
 
+const md5 = require('md5')
 const axios = require('axios')
 const debug = require('debug')('relay')
 const timer = require('debug')('timer')
@@ -24,7 +25,8 @@ if(shouldFire){
 	debug('firing')
 	axios.post(hook,{
 		'username':username,
-		'content':message
+		'content':message,
+		'avatar_url':`https://www.gravatar.com/avatar/${md5(username)}?d=robohash`
 	})
 	debug('fired')
 }
