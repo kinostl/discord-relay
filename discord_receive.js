@@ -15,7 +15,7 @@ client.on('message', message => {
 	const name = `<${message.member.displayName}#${message.author.discriminator}>`
 	let post = emoji.unemojify(message.cleanContent)
 	post = post.replace(/\r|\n|\r\n|\n\r/g,'%r')
-	if(message.attachments){
+	if(message.attachments.array().length > 0){
 		post = message.attachments.reduce((accumulate, attachment)=>`${accumulate}%r${attachment.url}`,`${post}%r- Attachments -`)
 	}
         const execstring=`cemit(${message.channel.name},escape(ansi(hm,%[D%])%b${name}%b${post}))`
