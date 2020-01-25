@@ -12,7 +12,13 @@ client.on('message', message => {
         if(message.author == client.user)return
         // don't respond to webhooks
         if(message.author.discriminator == '0000')return
-        const execstring=`cemit(${message.channel.name},escape(ansi(hm,%[D%])%b<${message.member.displayName}#${message.author.discriminator}> ${emoji.unemojify(message.cleanContent)}))`
+	const name = `<${message.member.displayName}#${message.author.discriminator}>`
+	let post = emoji.unemojify(message.cleanContent)
+	post = post.replace(/\r|\n|\r\n|\n\r/g,'%r')
+	if(message.attachments){
+		post = message.attachments.reduce((accumulate, attachment)=>`${accumulate}%r${attachment.url}`,`${post}%r- Attachments -`)
+	}
+        const execstring=`cemit(${message.channel.name},escape(ansi(hm,%[D%])%b${name}%b${post}))`
         const headers={"Exec":execstring, "Encode":"Yes"}
         console.log(execstring)
         //requests.post(,headers=headers,auth=("#50","SomethingSecure"))
