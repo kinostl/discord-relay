@@ -12,7 +12,7 @@ client.on('message', message => {
         if(message.author == client.user)return
         // don't respond to webhooks
         if(message.author.discriminator == '0000')return
-        const execstring=`cemit(${message.channel.name},escape(${message.member.displayName}#${message.author.discriminator}->${emoji.unemojify(message.cleanContent)}))`
+        const execstring=`cemit(${message.channel.name},escape(ansi(hc,%[D%])<${message.member.displayName}#${message.author.discriminator}> ${emoji.unemojify(message.cleanContent)}))`
         const headers={"Exec":execstring, "Encode":"Yes"}
         console.log(execstring)
         //requests.post(,headers=headers,auth=("#50","SomethingSecure"))
