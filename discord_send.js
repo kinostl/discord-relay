@@ -13,7 +13,7 @@ const username = process.env['MUSHQ_A']
 const message = process.env['MUSHQ_B']
 const channel = process.env['MUSHQ_C']
 const shouldFire = (username != "ApiTool" && !message.endsWith('connected.'))
-
+//Change ApiTool in souldFire to whatever your API Object is named.
 
 if(shouldFire){
 	const hook = hooks[channel]
