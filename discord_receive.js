@@ -33,4 +33,4 @@ client.on('message', message => {
 	})
 })
 
-client.login('NjU3NzUxMDM2OTc0NDY1MDcy.Xf1weA.9MJzhdsLT_cM220pH40gaTJoABQ')
+client.login('DISCORD_APP_TOKEN_HERE')
