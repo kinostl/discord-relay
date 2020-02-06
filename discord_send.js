@@ -23,7 +23,7 @@ if(shouldFire){
 		'username':username,
 		'content':message,
 		'avatar_url':`https://www.gravatar.com/avatar/${md5(username)}?d=robohash`
-	})
+	}).catch((e)=>{console.error(e.message)})
 	debug('fired')
 }
 debug('closing script')
