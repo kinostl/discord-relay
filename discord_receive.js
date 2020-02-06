@@ -29,7 +29,7 @@ client.on('message', message => {
 			username: '#50',
 			password: 'SomethingSecure'
 		}
-	})
+	}).catch((e)=>{console.error(e.message)})
 })
 
 client.login('DISCORD_APP_TOKEN_HERE')
