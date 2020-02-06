@@ -12,7 +12,7 @@ debug('relay start')
 const username = process.env['MUSHQ_A']
 const message = process.env['MUSHQ_B']
 const channel = process.env['MUSHQ_C']
-const shouldFire = (username != "ApiTool" && !message.endsWith('connected.'))
+const shouldFire = (!message.startsWith('[D]' && !message.endsWith('connected.'))
 //Change ApiTool in souldFire to whatever your API Object is named.
 
 if(shouldFire){
