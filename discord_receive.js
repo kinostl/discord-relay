@@ -20,7 +20,7 @@ client.on('message', message => {
         if(message.attachments.array().length > 0){
                 post = message.attachments.reduce((accumulate, attachment)=>`${accumulate}%r${attachment.url}`,`${post}%r- Attachments -`)
         }
-        const execstring=`@cemit discord=%ch%cm[D]%cn ${name} ${post}`
+        const execstring=`@cemit ${message.channel.name}=%ch%cm[D]%cn ${name} ${post}`
         const headers={"Exec":execstring, "Encode":"Yes"}
 
 	axios({
