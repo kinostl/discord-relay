@@ -20,8 +20,8 @@ client.on('message', message => {
         if(message.attachments.array().length > 0){
                 post = message.attachments.reduce((accumulate, attachment)=>`${accumulate}%r${attachment.url}`,`${post}%r- Attachments -`)
         }
-        const execstring=`@cemit ${message.channel.name}=%ch%cm[D]%cn ${name} ${post}`
-        const headers={"Exec":execstring, "Encode":"Yes"}
+        const execstring=`@cemit [udefault(me/chanhandler,${message.channel.name},${message.channel.name})]=%ch%cm[D]%cn ${name} ${post}`
+        const headers={"Exec":execstring, "Encode":"Yes", "Parse":"ansiparse"}
 
 	axios({
 		method: 'post',
