@@ -13,6 +13,8 @@ client.on('message', message => {
         // don't respond to webhooks
         if(message.author.discriminator == '0000')return
         const name = `<${message.author.username}#${message.author.discriminator}>`
+	//const name = `<${message.member.displayName}#${message.author.discriminator}>`
+	//Uncomment this, and comment the previous one to enable server nicknames instead.
         let post = emoji.unemojify(message.cleanContent)
         post = post.replace(/\r|\n|\r\n|\n\r/g,'%r')
         if(message.attachments.array().length > 0){
