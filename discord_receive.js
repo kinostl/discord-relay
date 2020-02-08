@@ -12,7 +12,7 @@ client.on('message', message => {
         if(message.author == client.user)return
         // don't respond to webhooks
         if(message.author.discriminator == '0000')return
-        const name = `<${message.author.username}#${message.author.discriminator}>`
+        const name = emoji.unemojify(`<${message.author.username}#${message.author.discriminator}>`)
 	//const name = `<${message.member.displayName}#${message.author.discriminator}>`
 	//Uncomment this, and comment the previous one to enable server nicknames instead.
         let post = emoji.unemojify(message.cleanContent)
@@ -20,7 +20,7 @@ client.on('message', message => {
         if(message.attachments.array().length > 0){
                 post = message.attachments.reduce((accumulate, attachment)=>`${accumulate}%r${attachment.url}`,`${post}%r- Attachments -`)
         }
-        const execstring=`@cemit [udefault(me/chanhandler,${message.channel.name},${message.channel.name})]=%ch%cm[D]%cn ${name} ${post}`
+        const execstring=`@cemitnp [udefault(me/chanhandler,${message.channel.name},${message.channel.name})]=%ch%cm[D]%cn ${name} ${post}`
         const headers={"Exec":execstring, "Encode":"Yes", "Parse":"ansiparse"}
 
 	axios({
