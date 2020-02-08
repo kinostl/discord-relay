@@ -8,3 +8,9 @@ Move update_discord.sh into your Rhost Scripts folder, and make it executable.
 Append this to your ComSysSIDEFX/DO_HIST1
 
 `[setq(a,name(%#))][setq(b,[stripansi([r(7)])])][setq(c,[r(1)])][execscript(update_discord.sh)]`
+
+Make sure you disable your API Count Handler by adding this to your netrhost.conf
+
+`passapi_site 0.0.0.0 0.0.0.0`
+
+You can use sites like normal to be restrictive on per site after doing this.
