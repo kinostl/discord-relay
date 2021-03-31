@@ -16,7 +16,7 @@ client.on('message', message => {
 	//const name = `<${message.member.displayName}#${message.author.discriminator}>`
 	//Uncomment this, and comment the previous one to enable server nicknames instead.
         let post = emoji.unemojify(message.cleanContent)
-        post = post.replace(/\r|\n|\r\n|\n\r/g,'%r')
+        post = post.replace(/\r|\n|\r\n|\n\r/g,'%r%ch%cx%[cont%] ')
         if(message.attachments.array().length > 0){
                 post = message.attachments.reduce((accumulate, attachment)=>`${accumulate}%r${attachment.url}`,`${post}%r- Attachments -`)
         }
