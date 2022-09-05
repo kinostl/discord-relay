@@ -1,17 +1,18 @@
 const hooks={
-	'ashcom-channel-name':'https://discord.channel.webhook',
+	'ashcom-channel-name':'DISCORD CHANNEL WEBHOOK',
 }
 
 const md5 = require('md5')
 const axios = require('axios')
 const debug = require('debug')('relay')
 const timer = require('debug')('timer')
+const rhost = require('./rhost')
 timer('start')
 debug('relay start')
 
-const username = process.env['MUSHQ_A']
-const message = process.env['MUSHQ_B']
-const channel = process.env['MUSHQ_C']
+const username = rhost.decodeString(process.env['MUSHQ_A'])
+const message = rhost.decodeString(process.env['MUSHQ_B'])
+const channel = rhost.decodeString(process.env['MUSHQ_C'])
 const shouldFire = (!message.startsWith('[D]') && !message.endsWith('connected.'))
 //Change ApiTool in souldFire to whatever your API Object is named.
 
